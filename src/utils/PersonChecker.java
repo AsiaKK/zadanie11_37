@@ -1,5 +1,7 @@
 package utils;
 
+import domain.IncorrectAgeException;
+import domain.NameUndefinedException;
 import domain.Person;
 
 import java.util.Scanner;
@@ -21,7 +23,13 @@ public class PersonChecker {
         System.out.println("Enter age");
         int age = scan.nextInt();
         scan.close();
-        Person person1 = new Person(firstName, lastName, pesel, age);
+        try {
+            Person person1 = new Person(firstName, lastName, pesel, age);
+        } catch (NameUndefinedException e) {
+            System.out.println(e);
+        } catch (IncorrectAgeException e) {
+            System.out.println(e);
+        }
 
         System.out.println("================================");
         System.out.println("You entered person data: ");

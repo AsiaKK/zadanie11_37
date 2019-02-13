@@ -8,12 +8,12 @@ public class Person {
     private String pesel;
     private int age;
 
-    public Person(String firstName, String lastName, String pesel, int age) {
+    public Person(String firstName, String lastName, String pesel, int age) throws NameUndefinedException, IncorrectAgeException {
         if(firstName == null || lastName==null || firstName.length()<2 || lastName.length()<2){
-            throw new NameUndefinedException();
+            throw new NameUndefinedException("Niepoprawne imię lub nazwisko!");
         }
         if (age<1){
-            throw new IncorrectAgeException();
+            throw new IncorrectAgeException("Zły wiek");
         }
         this.firstName = firstName;
         this.lastName = lastName;
